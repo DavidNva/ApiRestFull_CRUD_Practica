@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Try jQuery Online</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://localhost:5223/api/producto/lista",
+            type: "GET",
+            success: function(data) {
+                console.log(data);
+                $('#result').text(JSON.stringify(data));
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + status + " - " + error);
+                $('#result').text("Error al cargar los datos");
+            }
+        });
+    });
+    </script>
+</body>
+</html>
